@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Nav = styled.nav`
-  background: #333;
-  padding: 10px;
+  background: #000;
+  padding: 5px;
 `;
 
 const StyledLink = styled(Link)`
@@ -34,7 +34,7 @@ function Navigation() {
     <Nav>
       <NavList>
         <NavItem><StyledLink to="/">Home</StyledLink></NavItem>
-        <NavItem><StyledLink to="/thewelcomepacket">The Welcome Packet</StyledLink></NavItem>
+        <NavItem><StyledLink to="/layereddynamics">Layered Dynamics</StyledLink></NavItem>
         <NavItem><StyledLink to="/resources">Resources</StyledLink></NavItem>
         <NavItem><StyledLink to="/readme-generator">README Generator</StyledLink></NavItem>
       </NavList>

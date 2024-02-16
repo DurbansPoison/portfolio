@@ -1,6 +1,7 @@
 {
   "name": "portfolio",
   "version": "0.1.0",
+	"homepage": "https://durbanspoison.github.io/portfolio",
   "private": true,
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.19.4",
@@ -14,7 +15,6 @@
     "@testing-library/user-event": "^13.5.0",
     "contentful": "^10.6.21",
     "jspdf": "^2.5.1",
-    "netlify-cms-app": "^2.15.72",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-ga4": "^2.1.0",
@@ -28,6 +28,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+		"predeploy": "npm run build",
+		"deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -48,5 +50,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.1"
   }
 }

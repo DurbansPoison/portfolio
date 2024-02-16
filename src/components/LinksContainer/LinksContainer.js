@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  margin-top: 20px;
+  margin-top: 2px;
   display: flex;
   flex-direction: column;
   align-items: center;

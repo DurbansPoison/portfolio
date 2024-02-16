@@ -1,7 +1,6 @@
-// src/components/Common/Header.js
 import React from 'react';
 import styled from 'styled-components';
-import ModelViewer from '../ModelViewer/ModelViewer';
+
 
 const StyledHeader = styled.header`
   background-color: #282c34;
@@ -10,15 +9,24 @@ const StyledHeader = styled.header`
   text-align: center;
 `;
 
-const HeaderTitle = styled.h1`
-  margin: 0;
+// const HeaderTitle = styled.h1`
+//   margin: 0;
+// `;
+
+// Adding styled component for the logo image
+const LogoImage = styled.img`
+  max-width: 20%;
+  height: auto; // Preserve aspect ratio
 `;
 
 function Header() {
+  const logoSrc = `${process.env.PUBLIC_URL}/assets/logo-with-text.svg`;
+
   return (
     <StyledHeader>
-			<ModelViewer />
-      <HeaderTitle>DurbanPoisonPew</HeaderTitle>
+      {/* <HeaderTitle>DurbanPoisonPew</HeaderTitle> */}
+      {/* Use the LogoImage styled component for the logo */}
+      <LogoImage src={logoSrc} alt="Logo with Text that says DurbanPoisonPew" />
     </StyledHeader>
   );
 }

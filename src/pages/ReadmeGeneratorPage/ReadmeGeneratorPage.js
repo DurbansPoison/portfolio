@@ -52,7 +52,7 @@ function ReadmeGeneratorPage() {
     credits: '',
     assemblyInstructions: '',
 	license: '',
-    contactInfo: ''
+    additionalNotes: ''
   });
 
   const handleChange = (e) => {

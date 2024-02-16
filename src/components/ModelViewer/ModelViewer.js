@@ -1,39 +1,47 @@
 import React, { Suspense, useRef, useEffect } from 'react';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { Canvas, useFrame } from '@react-three/fiber';
 import { useGLTF, PerspectiveCamera } from '@react-three/drei';
-import * as THREE from 'three';
 
-function Model() {
+function Model({ addLighting, color = 'white' }) { // Default color set to 'white'
   const modelRef = useRef();
-  const { scene } = useGLTF('/assets/LOGO.glb');
+  const { scene } = useGLTF(process.env.PUBLIC_URL + '/assets/Burnt-Bacon.glb');
 
   useFrame(() => {
-    modelRef.current.rotation.y += 0.005; // Adjust rotation speed here
+    modelRef.current.rotation.y += 0.005;
   });
 
-  // Adjust the model's color
+  // Apply color
   useEffect(() => {
     scene.traverse((child) => {
       if (child.isMesh) {
-        child.material.color.set('white'); // Set to any preferred color
+        child.material.color.set(color); // Use the color prop
       }
     });
-  }, [scene]);
+  }, [color, scene]);
 
-  return <primitive object={scene} ref={modelRef} scale={1} />; // Adjust scale as needed
+  return <primitive object={scene} ref={modelRef} scale={.2} />;
 }
 
-function ModelViewer() {
+function ModelViewer({ addLighting = true, modelColor }) {
   return (
-    <Canvas style={{ width: '100%', height: '200px' }}> {/* Adjust Canvas size as needed */}
-      <PerspectiveCamera makeDefault position={[0, 0, 15]} /> {/* Adjust camera position as needed */}
-      <ambientLight intensity={3} />
-      <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
+    <Canvas style={{ width: '100%', height: '400px' }}>
+      <PerspectiveCamera makeDefault position={[0, 7, 80]} fov={12} />
+      {addLighting && (
+        <>
+          <ambientLight intensity={0.3} />
+          {/* Light from above towards the front */}
+          <spotLight position={[0, 10, 5]} angle={4} penumbra={2} intensity={14.5} />
+          {/* Additional spotlight from in front of the object */}
+          <spotLight position={[0, 0, 10]} angle={20} penumbra={1} intensity={10.5} />
+        </>
+      )}
       <Suspense fallback={null}>
-        <Model />
+        <Model addLighting={addLighting} color={modelColor} />
       </Suspense>
     </Canvas>
   );
 }
 
+
 export default ModelViewer;
+

@@ -2,6 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import LinksContainer from '../../components/LinksContainer/LinksContainer';
+import ModelViewer from '../../components/ModelViewer/ModelViewer'
 
 const HomePageContainer = styled.div`
   display: flex;
@@ -18,7 +19,8 @@ const Title = styled.h1`
 function Home() {
   return (
     <HomePageContainer>
-      <Title>My Links</Title>
+		<ModelViewer />
+      <Title>Where You Can Find Me.</Title>
 	  <LinksContainer />
     </HomePageContainer>
   );
