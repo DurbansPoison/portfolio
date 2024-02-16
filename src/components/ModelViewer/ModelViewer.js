@@ -2,7 +2,7 @@ import React, { Suspense, useRef, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useGLTF, PerspectiveCamera } from '@react-three/drei';
 
-function Model({ addLighting, color = 'white' }) { // Default color set to 'white'
+function Model({ addLighting, color = 'white' }) {
   const modelRef = useRef();
   const { scene } = useGLTF(process.env.PUBLIC_URL + '/assets/Burnt-Bacon.glb');
 
@@ -30,9 +30,9 @@ function ModelViewer({ addLighting = true, modelColor }) {
         <>
           <ambientLight intensity={0.3} />
           {/* Light from above towards the front */}
-          <spotLight position={[0, 10, 5]} angle={4} penumbra={2} intensity={14.5} />
+          <spotLight position={[0, 10, 5]} angle={1} intensity={14.5} />
           {/* Additional spotlight from in front of the object */}
-          <spotLight position={[0, 0, 10]} angle={20} penumbra={1} intensity={10.5} />
+          <spotLight position={[0, 0, 10]} angle={1} penumbra={1} intensity={10.5} />
         </>
       )}
       <Suspense fallback={null}>
